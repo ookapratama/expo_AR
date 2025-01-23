@@ -2,6 +2,7 @@ import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
+  useRoute,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
@@ -12,9 +13,12 @@ import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { PaperProvider } from "react-native-paper";
+import { Dimensions } from "react-native";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
+const { width, height } = Dimensions.get("screen");
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -29,7 +33,7 @@ export default function RootLayout() {
   }, [loaded]);
 
   if (!loaded) {
-    return ;
+    return;
   }
 
   return (
@@ -37,7 +41,7 @@ export default function RootLayout() {
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name="(screen)" options={{ headerShown: false }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="index" />
           <Stack.Screen name="+not-found" />
         </Stack>
         <StatusBar style="auto" />

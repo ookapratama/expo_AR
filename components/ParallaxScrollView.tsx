@@ -72,6 +72,8 @@ const styles = StyleSheet.create({
   header: {
     height: HEADER_HEIGHT,
     overflow: 'hidden',
+    borderEndEndRadius: 40,
+    borderStartEndRadius: 40,
   },
   content: {
     flex: 1,
