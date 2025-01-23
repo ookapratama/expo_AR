@@ -49,11 +49,11 @@ export default function HomeScreen() {
       }
     >
       {/* Start Cateogry hewan */}
-      <ThemedView>
+      <ThemedView style={styles.stepContainer}>
         {/* category label */}
         <ThemedView
           id="containerLabel"
-          style={[styles.titleContainer, { justifyContent: "space-between" }]}
+          style={[styles.titleContainer, { justifyContent: "space-between", marginBottom: 5 }]}
         >
           <ThemedText type="subtitle">Kategori Hewan</ThemedText>
           <ThemedText type="link" style={{ textDecorationLine: "underline" }}>
@@ -83,7 +83,7 @@ export default function HomeScreen() {
       {/* End Cateogry hewan */}
 
       {/* Start klasifikasi hewan */}
-      <ThemedView style={styles.stepContainer}>
+      <ThemedView style={[styles.stepContainer, {marginTop: -10}]}>
         {/* category label */}
         <ThemedView
           id="containerLabel"
@@ -141,7 +141,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 12,
     alignItems: "center",
   },
 });
