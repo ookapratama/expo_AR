@@ -1,13 +1,15 @@
 import { Image, TouchableOpacity } from "react-native";
 import { ThemedView } from "./ThemedView";
 import { ThemedText } from "./ThemedText";
+import { Link } from "expo-router";
 
 interface IBulletCategory {
   title: string;
   url: undefined;
+  idx: number | string;
 }
 
-const BulletCategory = ({ title, url }: IBulletCategory) => {
+const BulletCategory = ({ title, url, idx }: IBulletCategory) => {
   return (
     <ThemedView>
       <TouchableOpacity

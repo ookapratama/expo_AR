@@ -1,11 +1,4 @@
-import {
-  Image,
-  StyleSheet,
-  Platform,
-  Pressable,
-  View,
-  TouchableOpacity,
-} from "react-native";
+import { Image, StyleSheet } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -13,10 +6,15 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Link } from "expo-router";
 import { getGreeting } from "@/constants/Greetings";
-import { Avatar, useTheme } from "react-native-paper";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { useTheme } from "react-native-paper";
 import BulletCategory from "@/components/BulletCategory";
 import CarouselItems from "@/components/CarouselItems";
+import { ImageSlides } from "@/constants/Images";
+import Swiper from "react-native-swiper";
+import {
+  widthPercentageToDP as w,
+  heightPercentageToDP as h,
+} from "@/constants/Responsive";
 
 export default function HomeScreen() {
   const theme = useTheme();
@@ -53,7 +51,10 @@ export default function HomeScreen() {
         {/* category label */}
         <ThemedView
           id="containerLabel"
-          style={[styles.titleContainer, { justifyContent: "space-between", marginBottom: 5 }]}
+          style={[
+            styles.titleContainer,
+            { justifyContent: "space-between", marginBottom: 5 },
+          ]}
         >
           <ThemedText type="subtitle">Kategori Hewan</ThemedText>
           <ThemedText type="link" style={{ textDecorationLine: "underline" }}>
@@ -62,28 +63,60 @@ export default function HomeScreen() {
         </ThemedView>
         {/* Category item */}
         <ThemedView style={styles.containerCategory}>
-          <BulletCategory
-            title={"mamalia"}
-            url={require("../../assets/images/icon/mamalia.png")}
-          />
-          <BulletCategory
-            title={"reptile"}
-            url={require("../../assets/images/icon/reptile.png")}
-          />
-          <BulletCategory
-            title={"burung"}
-            url={require("../../assets/images/icon/bird.png")}
-          />
-          <BulletCategory
-            title={"ikan"}
-            url={require("../../assets/images/icon/fish.png")}
-          />
+          <Link
+            href={{
+              pathname: "/(screen)/byCategory/[category]",
+              params: { id: 1, category: "Mamalia" },
+            }}
+          >
+            <BulletCategory
+              title={"mamalia"}
+              url={require("../../assets/images/icon/mamalia.png")}
+              idx={1}
+            />
+          </Link>
+          <Link
+            href={{
+              pathname: "/(screen)/byCategory/[category]",
+              params: { id: 2, category: "Reptile" },
+            }}
+          >
+            <BulletCategory
+              title={"reptile"}
+              url={require("../../assets/images/icon/reptile.png")}
+              idx={2}
+            />
+          </Link>
+          <Link
+            href={{
+              pathname: "/(screen)/byCategory/[category]",
+              params: { id: 3, category: "Burung" },
+            }}
+          >
+            <BulletCategory
+              title={"burung"}
+              url={require("../../assets/images/icon/bird.png")}
+              idx={3}
+            />
+          </Link>
+          <Link
+            href={{
+              pathname: "/(screen)/byCategory/[category]",
+              params: { id: 3, category: "Ikan" },
+            }}
+          >
+            <BulletCategory
+              title={"ikan"}
+              url={require("../../assets/images/icon/fish.png")}
+              idx={4}
+            />
+          </Link>
         </ThemedView>
       </ThemedView>
       {/* End Cateogry hewan */}
 
       {/* Start klasifikasi hewan */}
-      <ThemedView style={[styles.stepContainer, {marginTop: -10}]}>
+      <ThemedView style={[styles.stepContainer, { marginTop: -10 }]}>
         {/* category label */}
         <ThemedView
           id="containerLabel"
@@ -98,24 +131,47 @@ export default function HomeScreen() {
       </ThemedView>
       {/* End klasifikasi hewan */}
 
+      {/* Start galeri zoo */}
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this
-          starter app.
-        </ThemedText>
+        <ThemedView
+          id="containerLabel"
+          style={[styles.titleContainer, { justifyContent: "space-between" }]}
+        >
+          <ThemedText type="subtitle">Galeri Wisata</ThemedText>
+          <Link href={"https://www.instagram.com/bontomarannueducationpark/"}>
+            <ThemedText type="link" style={{ textDecorationLine: "underline" }}>
+              Lihat lebih lengkap
+            </ThemedText>
+          </Link>
+        </ThemedView>
+        <ThemedView style={{ height: h(22), borderRadius: 20 }}>
+          <Swiper
+            autoplay
+            dotColor="#ccc"
+            activeDotColor="#FA8F2A"
+            showsPagination={true}
+            autoplayTimeout={4}
+          >
+            {ImageSlides.map((item) => (
+              <ThemedView
+                key={item.id}
+                style={{ flex: 1, justifyContent: "center", borderRadius: 20 }}
+              >
+                <Image
+                  source={item.url}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    resizeMode: "cover",
+                    borderRadius: 20,
+                  }}
+                />
+              </ThemedView>
+            ))}
+          </Swiper>
+        </ThemedView>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{" "}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText>{" "}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
-          directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
+      {/* End galeri zoo */}
     </ParallaxScrollView>
   );
 }
