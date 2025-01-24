@@ -8,6 +8,7 @@ import React from "react";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { StatusBar } from "expo-status-bar";
+import { ThemedText } from "@/components/ThemedText";
 
 const stackScreen = () => {
   const colorScheme = useColorScheme();
@@ -25,7 +26,12 @@ const stackScreen = () => {
       >
         <Stack.Screen name="home" options={{ headerShown: false }} />
         <Stack.Screen name="byCategory" />
-        <Stack.Screen name="details" />
+        <Stack.Screen
+          name="details/[id]"
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

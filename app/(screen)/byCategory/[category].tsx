@@ -53,7 +53,7 @@ const ByCategory = () => {
         }}
       >
         {AnimalIMages.map((item) => (
-          <Card key={item.id} title={item.title} url={item.url} />
+          <Card key={item.id} idx={item.id} title={item.title} url={item.url} />
         ))}
       </ThemedView>
     </ScrollView>
