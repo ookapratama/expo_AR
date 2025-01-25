@@ -25,9 +25,21 @@ const stackScreen = () => {
         }}
       >
         <Stack.Screen name="home" options={{ headerShown: false }} />
-        <Stack.Screen name="byCategory" />
+        <Stack.Screen name="byCategory/[category]" />
         <Stack.Screen
           name="details/[id]"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="camera/[id]"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="byClassification/[classification]"
           options={{
             headerShown: false,
           }}

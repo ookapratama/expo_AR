@@ -1,13 +1,42 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { View, Image, Animated, StyleSheet, ScrollView } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { StatusBar } from "expo-status-bar";
 import { ThemedView } from "@/components/ThemedView";
+import { Link, useLocalSearchParams } from "expo-router";
+import { AnimalIMages } from "@/constants/Images";
+import { ActivityIndicator, Button } from "react-native-paper";
+import { heightPercentageToDP as h } from "@/constants/Responsive";
 
 const HEADER_MAX_HEIGHT = 300;
 const HEADER_MIN_HEIGHT = 100;
 
+interface IData {
+  title: string;
+  desc: string;
+  category: string;
+  classification: string;
+  url: string;
+}
+
 const Detail = () => {
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const [data, setData] = useState<IData[]>([]);
+
+  const getData = async () => {
+    // const data = await AnimalIMages.find((item) => item.id == parseInt(id));
+    const data = await AnimalIMages.filter((item) => String(item.id) === id);
+    setData(data);
+  };
+
+  useEffect(() => {
+    if (id) {
+      getData();
+    }
+  }, [id]);
+
+  console.log(data[0]);
+
   const scrollY = useRef(new Animated.Value(0)).current;
 
   const headerHeight = scrollY.interpolate({
@@ -59,39 +88,88 @@ const Detail = () => {
         contentContainerStyle={styles.scrollContent}
       >
         <View style={styles.contentContainer}>
-          <ThemedText type="title" style={styles.title}>
-            Gajah
-          </ThemedText>
-          <ThemedView
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            <ThemedView style={{ marginLeft: 5, marginTop: 48 }}>
-              <ThemedText type="subtitle" style={{}}>
-                Kategori
+          {data == undefined ? (
+            <ActivityIndicator animating={true} color="red"></ActivityIndicator>
+          ) : (
+            <>
+              <ThemedText type="title" style={styles.title}>
+                {data[0]?.title}
               </ThemedText>
-              <ThemedText style={{ fontWeight: "600" }}>Mamalia</ThemedText>
-            </ThemedView>
-            <ThemedView style={{ marginLeft: 5, marginTop: 48 }}>
-              <ThemedText type="subtitle" style={{}}>
-                Klasifikasi
+              <ThemedView
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  marginTop: 24
+                }}
+              >
+                <ThemedView style={{ marginLeft: 5 }}>
+                  <ThemedText type="subtitle" style={{}}>
+                    Kategori
+                  </ThemedText>
+                  <ThemedText
+                    style={{ fontWeight: "600", textTransform: "capitalize" }}
+                  >
+                    {data[0]?.category}
+                  </ThemedText>
+                </ThemedView>
+                <ThemedView style={{ marginLeft: 5 }}>
+                  <ThemedText type="subtitle" style={{}}>
+                    Klasifikasi
+                  </ThemedText>
+                  <ThemedText
+                    style={{ fontWeight: "600", textTransform: "capitalize" }}
+                  >
+                    Hidup di {data[0]?.classification}
+                  </ThemedText>
+                </ThemedView>
+              </ThemedView>
+              <ThemedText numberOfLines={1}></ThemedText>
+              <ThemedText
+                type="link"
+                style={{
+                  marginLeft: 5,
+                  fontSize: 28,
+                  marginTop: 24,
+                  fontWeight: "700",
+                }}
+              >
+                Deskripsi:
               </ThemedText>
-              <ThemedText style={{ fontWeight: "600" }}>
-                Hidup di Darat
+              <ThemedText
+                style={{
+                  textAlign: "justify",
+                  marginLeft: 5,
+                  fontSize: 16,
+                  marginTop: 6,
+                  lineHeight: 28,
+                  fontWeight: "400",
+                }}
+              >
+                {"\u00A0"}
+                {"\u00A0"}
+                {"\u00A0"}
+                {"\u00A0"}
+                {data[0]?.desc}
               </ThemedText>
-            </ThemedView>
-          </ThemedView>
-          <ThemedText numberOfLines={1}></ThemedText>
-          <ThemedText type="link" style={{ marginLeft: 5, fontSize: 28, marginTop: 24, fontWeight: '700' }}>
-            Deskripsi:
-          </ThemedText>
-          {/* Add more content here */}
-          {/* {[...Array(20)].map((_, index) => (
-            <ThemedText style={{ fontSize: 48 }} type="title" key={index}>
-              Detail content paragraph {index + 1}
-            </ThemedText>
-          ))} */}
+            </>
+          )}
         </View>
       </Animated.ScrollView>
+      <ThemedView>
+        <Link href={{
+          pathname: "/(screen)/camera/[id]",
+          params: {idx: data[0]?.title}
+        }}>
+          <Button
+            style={{ width: "100%", height: h(8), borderRadius: 0 }}
+            labelStyle={{ fontSize: 20, letterSpacing: 2, paddingVertical: 16 }}
+            icon={"camera"}
+            mode={"contained"}
+          >
+            Open AR Camera
+          </Button>
+        </Link>
+      </ThemedView>
     </View>
   );
 };
