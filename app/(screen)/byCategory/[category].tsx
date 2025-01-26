@@ -52,7 +52,7 @@ const ByCategory = () => {
           marginTop: h(3),
         }}
       >
-        {AnimalIMages.map((item) => (
+        {AnimalIMages.filter(item => item.category == category).map((item) => (
           <Card key={item.id} idx={item.id} title={item.title} url={item.url} />
         ))}
       </ThemedView>

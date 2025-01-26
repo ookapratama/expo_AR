@@ -12,7 +12,7 @@ const HEADER_MAX_HEIGHT = 300;
 const HEADER_MIN_HEIGHT = 100;
 
 interface IData {
-  title: string;
+  title: string | number;
   desc: string;
   category: string;
   classification: string;
@@ -34,8 +34,6 @@ const Detail = () => {
       getData();
     }
   }, [id]);
-
-  console.log(data[0]);
 
   const scrollY = useRef(new Animated.Value(0)).current;
 

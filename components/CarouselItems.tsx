@@ -24,7 +24,12 @@ const CarouselItems = () => {
             key={item.id}
             style={{ flex: 1, justifyContent: "center", borderRadius: 20 }}
           >
-            <Link href={"/(screen)/splash"}>
+            <Link
+              href={{
+                pathname: "/(screen)/byClassification/[classification]",
+                params: { classification: item.from },
+              }}
+            >
               <Image
                 source={item.image}
                 style={{

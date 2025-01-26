@@ -38,12 +38,7 @@ const stackScreen = () => {
             headerShown: false,
           }}
         />
-        <Stack.Screen
-          name="byClassification/[classification]"
-          options={{
-            headerShown: false,
-          }}
-        />
+        <Stack.Screen name="byClassification/[classification]"  />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
