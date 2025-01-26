@@ -71,7 +71,7 @@ const Detail = () => {
         ]}
       >
         <Image
-          source={require("../../../assets/images/category/gajah.jpg")}
+          source={data[0]?.url ? data[0].url : require("../../../assets/images/404/error1.png")}
           style={styles.headerImage}
           resizeMode="cover"
         />
@@ -161,8 +161,8 @@ const Detail = () => {
           params: {idx: data[0]?.title}
         }}>
           <Button
-            style={{ width: "100%", height: h(8), borderRadius: 0 }}
-            labelStyle={{ fontSize: 20, letterSpacing: 2, paddingVertical: 16 }}
+            style={{ width: "100%", height: h(8), borderRadius: 0, backgroundColor:'#FA8F2A' }}
+            labelStyle={{ fontSize: 20, letterSpacing: 2, paddingVertical: 16, }}
             icon={"camera"}
             mode={"contained"}
           >

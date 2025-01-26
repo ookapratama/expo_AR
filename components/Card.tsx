@@ -37,7 +37,7 @@ const Card = ({ title, url, idx }: ICard) => {
           <Image
             resizeMode="stretch"
             style={{ width: "100%", height: "100%", borderRadius: 8 }}
-            source={url}
+            source={url ? url : require('../assets/images/404/error1.png')}
           />
         </ThemedView>
       </Link>
