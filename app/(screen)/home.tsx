@@ -102,13 +102,25 @@ export default function HomeScreen() {
           <Link
             href={{
               pathname: "/(screen)/byCategory/[category]",
-              params: { id: 3, category: "Ikan" },
+              params: { id: 4, category: "Ikan" },
             }}
           >
             <BulletCategory
               title={"ikan"}
               url={require("../../assets/images/icon/fish.png")}
               idx={4}
+            />
+          </Link>
+          <Link
+            href={{
+              pathname: "/(screen)/byCategory/[category]",
+              params: { id: 5, category: "Avertebrata" },
+            }}
+          >
+            <BulletCategory
+              title={"avertebrata"}
+              url={require("../../assets/images/icon/crab.png")}
+              idx={5}
             />
           </Link>
         </ThemedView>
