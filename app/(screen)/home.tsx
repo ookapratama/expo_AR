@@ -23,10 +23,6 @@ export default function HomeScreen() {
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#FA8F2A", dark: "#1D3D47" }}
       headerImage={
-        // <Image
-        //   source={require("@/assets/images/partial-react-logo.png")}
-        //   style={styles.reactLogo}
-        // />
         <ThemedView
           style={{ marginTop: 80, paddingHorizontal: 20 }}
           lightColor="#FA8F2A"
@@ -197,13 +193,6 @@ const styles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
   },
   containerCategory: {
     display: "flex",
