@@ -206,6 +206,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     marginLeft: 5,
     marginTop: 10,
+    textTransform: 'capitalize'
   },
 });
 
