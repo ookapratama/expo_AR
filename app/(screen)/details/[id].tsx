@@ -198,8 +198,8 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: 20,
     backgroundColor: "white",
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
     marginTop: -20,
   },
   title: {
