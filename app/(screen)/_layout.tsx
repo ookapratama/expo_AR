@@ -26,6 +26,7 @@ const stackScreen = () => {
       >
         <Stack.Screen name="home" options={{ headerShown: false }} />
         <Stack.Screen name="byCategory/[category]" />
+        <Stack.Screen name="byClassification/[classification]"  />
         <Stack.Screen
           name="details/[id]"
           options={{
@@ -38,7 +39,6 @@ const stackScreen = () => {
             headerShown: false,
           }}
         />
-        <Stack.Screen name="byClassification/[classification]"  />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

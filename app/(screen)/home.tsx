@@ -124,7 +124,7 @@ export default function HomeScreen() {
       {/* End Cateogry hewan */}
 
       {/* Start klasifikasi hewan */}
-      <ThemedView style={[styles.stepContainer, { marginTop: -10 }]}>
+      <ThemedView style={[styles.stepContainer, { marginTop: 5 }]}>
         {/* category label */}
         <ThemedView
           id="containerLabel"

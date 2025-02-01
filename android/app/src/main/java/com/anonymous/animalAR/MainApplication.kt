@@ -1,7 +1,3 @@
-              add(ReactViroPackage(ReactViroPackage.ViroPlatform.GVR))
-              add(ReactViroPackage(ReactViroPackage.ViroPlatform.AR))
-              add(ReactViroPackage(ReactViroPackage.ViroPlatform.OVR_MOBILE))
-
 package com.anonymous.animalAR
 import com.viromedia.bridge.ReactViroPackage
 
@@ -30,6 +26,8 @@ class MainApplication : Application(), ReactApplication {
             val packages = PackageList(this).packages
             // Packages that cannot be autolinked yet can be added manually here, for example:
             // packages.add(new MyReactNativePackage());
+            packages.add(ReactViroPackage(ReactViroPackage.ViroPlatform.valueOf("AR")))
+            packages.add(ReactViroPackage(ReactViroPackage.ViroPlatform.valueOf("GVR")))
             return packages
           }
 
