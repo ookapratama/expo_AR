@@ -1,0 +1,15 @@
+// // metro.config.js
+module.exports = {
+    resolver: {
+      assetExts: ['obj', 'mtl', 'png', 'jpg', 'jpeg'],
+    },
+  };
+
+// metro.config.js
+// const { getDefaultConfig } = require('expo/metro-config');
+
+// const config = getDefaultConfig(__dirname);
+
+// config.resolver.assetExts.push('obj', 'mtl');
+
+// module.exports = config;
