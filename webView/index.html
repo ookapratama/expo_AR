@@ -12,39 +12,82 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden">
+    <script>
+      const urlObject =
+        "https://ed13-103-144-227-137.ngrok-free.app/public/3d/";
+      const urlMarker =
+        "https://ed13-103-144-227-137.ngrok-free.app/public/marker/";
+
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      // Mapping nama hewan ke model & marker
+      const animalModels = {
+        'Kupu kupu': {
+          model: urlObject + "kupukupu/butterfly.glb",
+          marker: urlMarker + "pattern-kupukupu.patt",
+        },
+        'Jerapah': {
+          model: urlObject + "jerapah/jerapah.glb",
+          marker: urlMarker + "pattern-jerapah.patt",
+        },
+        'Penguin afrika': {
+          model: urlObject + "penguin/penguin.glb",
+          marker: urlMarker + "pattern-penguin.patt",
+        },
+        'Kura kura': {
+          model: urlObject + "kurakura/kura.glb",
+          marker: urlMarker + "pattern-kurakura.patt",
+        },
+        'Gajah': {
+          model: urlObject + "gajah/gajah.glb",
+          marker: urlMarker + "pattern-gajah.patt",
+        },
+        'Monyet': {
+          model: urlObject + "monyet/monyet2.glb",
+          marker: urlMarker + "pattern-monyet.patt",
+        },
+      };
+
+      // Ambil pilihan hewan dari URL
+      const selectedAnimal = getQueryParam("animal") || "Kupu kupu"; // Default ke Kupu kupu
+      const modelPath =
+        animalModels[selectedAnimal]?.model || animalModels["Kupu kupu"].model;
+      const markerPath =
+        animalModels[selectedAnimal]?.marker || animalModels["Kupu kupu"].marker;
+    </script>
+
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: true;">
       <a-assets>
-        <!-- src=" https://93c0-125-162-209-179.ngrok-free.app/public/3d/jerapah/scene.gltf" -->
-        <a-asset-item
-          id="model"
-          src=" https://93c0-125-162-209-179.ngrok-free.app/public/3d/kupukupu/butterfly.glb"
-        ></a-asset-item>
+        <a-asset-item id="model" src=""></a-asset-item>
       </a-assets>
-      <!-- Custom Marker -->
-      <a-marker
-        type="pattern"
-        url=" https://93c0-125-162-209-179.ngrok-free.app/public/marker/pattern-kupukupu.patt"
-      >
-        <!-- OBJ Model -->
-        <!-- obj-model="obj: url( https://93c0-125-162-209-179.ngrok-free.app/public/3d/source/Butterfly.obj); mtl: url( https://93c0-125-162-209-179.ngrok-free.app/public/3d/source/Butterfly.mtl)" -->
-        <!-- <a-entity
-          gltf-model=" https://93c0-125-162-209-179.ngrok-free.app/public/3d/jerapah/scene.gltf"
-          position="0 0 0"
-          scale="0.05 0.05 0.05"
-        ></a-entity> -->
+
+      <!-- Custom Marker (Dinamis) -->
+      <a-marker id="dynamicMarker" type="pattern" url="">
         <a-entity
-          gltf-model="#model"
+          id="dynamicModel"
+          gltf-model=""
           play-all-model-animations=""
           position="0 -1 0"
           rotation="-90 0 0"
           scale="0.5 0.5 0.5"
           visible="true"
-        >
-        </a-entity>
+        ></a-entity>
       </a-marker>
 
       <!-- Camera -->
       <a-entity camera></a-entity>
     </a-scene>
+
+    <script>
+      // Set model dan marker secara dinamis
+      document.getElementById("model").setAttribute("src", modelPath);
+      document.getElementById("dynamicMarker").setAttribute("url", markerPath);
+      document
+        .getElementById("dynamicModel")
+        .setAttribute("gltf-model", `#model`);
+    </script>
   </body>
 </html>

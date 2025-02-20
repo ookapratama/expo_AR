@@ -20,7 +20,7 @@ interface IData {
 }
 
 const Detail = () => {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, titlex } = useLocalSearchParams<{ id: string, titlex: string }>();
   const [data, setData] = useState<IData[]>([]);
 
   const getData = async () => {

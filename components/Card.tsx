@@ -23,7 +23,7 @@ const Card = ({ title, url, idx }: ICard) => {
       <Link
         href={{
           pathname: "/(screen)/details/[id]",
-          params: { id: idx },
+          params: { id: idx, titlex: title  },
         }}
       >
         <ThemedView
