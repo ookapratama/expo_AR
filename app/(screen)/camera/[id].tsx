@@ -22,7 +22,7 @@ const ARWebView = () => {
   return (
     <View style={styles.container}>
       <WebView
-        source={{ uri: `https://3b99-103-164-170-225.ngrok-free.app?animal=${idx}` }}
+        source={{ uri: `https://7ce9-125-162-215-243.ngrok-free.app?animal=${idx}` }}
         style={styles.webview}
         javaScriptEnabled={true}
         mediaPlaybackRequiresUserAction={false}
@@ -30,7 +30,7 @@ const ARWebView = () => {
         mixedContentMode="always"
         androidHardwareAccelerationDisabled={false}
         domStorageEnabled={true}
-        cacheEnabled={false}
+        cacheEnabled={true}
         geolocationEnabled={true}
         useWebKit={true}
         originWhitelist={["*"]}

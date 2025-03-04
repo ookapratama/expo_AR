@@ -113,14 +113,6 @@ export const AnimalIMages = [
     url: require('../assets/images/category/kakatua.jpg')
   },
   {
-    id: 10,
-    title: "Jerapah",
-    desc: "Jerapah adalah hewan tertinggi di dunia yang dikenal karena lehernya yang sangat panjang dan tubuhnya yang elegan. Mereka hidup di padang rumput dan sabana di Afrika. Jerapah memiliki pola tubuh bercak-bercak cokelat yang unik untuk setiap individu. Mereka memakan daun dari pohon-pohon tinggi, terutama pohon akasia. Jerapah adalah hewan sosial yang hidup dalam kelompok kecil.",
-    category: "Mamalia",
-    classification: "Darat",
-    url: require('../assets/images/category/jerapah.jpg')
-  },
-  {
     id: 11,
     title: "Penguin afrika",
     desc: "Penguin Afrika adalah spesies penguin yang hidup di pantai dan pulau-pulau di Afrika Selatan dan Namibia. Mereka dikenal karena bulu hitam dan putihnya yang khas serta suara seperti keledai yang mereka keluarkan, sehingga sering disebut 'Jackass Penguin'. Penguin Afrika memakan ikan kecil seperti sarden dan teri serta cumi-cumi. Mereka bersarang di gua atau lubang yang digali di pasir.",
