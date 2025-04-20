@@ -68,7 +68,19 @@
         "@reactvision/react-viro",
         {
           "android": {
-            "xRMode": ["GVR", "AR", "OVR_MOBILE"]
+            "xRMode": [
+              "GVR",
+              "AR",
+              "OVR_MOBILE"
+            ]
+          }
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "kotlinVersion": "1.9.25"
           }
         }
       ]

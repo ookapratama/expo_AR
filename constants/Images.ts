@@ -41,14 +41,6 @@ export const ImageSlides = [
 
 export const AnimalIMages = [
   {
-    id: 1,
-    title: "Gajah",
-    desc: "Gajah adalah hewan darat terbesar di dunia. Mereka dikenal karena belalainya yang panjang, telinga yang besar, dan kulit yang tebal berwarna abu-abu. Gajah adalah makhluk yang sangat cerdas dan sosial yang hidup dalam kelompok. Mereka adalah herbivora dan terutama memakan rumput, buah-buahan, dan kulit kayu. Gajah ditemukan di Afrika dan Asia, dengan gajah Afrika lebih besar dibandingkan gajah Asia",
-    category: "Mamalia",
-    classification: "Darat",
-    url: require('../assets/images/category/gajah.jpg'),
-  },
-  {
     id: 2,
     title: "Monyet",
     desc: "Monyet adalah hewan mamalia yang cerdas dan lincah. Mereka hidup di berbagai habitat seperti hutan tropis, pegunungan, dan sabana. Monyet dikenal karena kemampuannya memanjat pohon dengan cekatan dan berinteraksi dalam kelompok sosial yang kompleks. Mereka memakan buah-buahan, daun, serangga, dan kadang-kadang telur burung.",
